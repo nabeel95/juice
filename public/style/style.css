@@ -1,0 +1,43 @@
+h1{
+	text-align: center;
+}
+body{
+	font: monospace;
+	font-size: 15px;
+}
+#axis path,
+#axis line {
+  fill: none;
+  stroke: black;
+  stroke-width:1px;
+  shape-rendering: crispEdges;
+}
+
+.bar {
+  fill: orange;
+}
+
+.bar:hover {
+  fill: orangered ;
+}
+
+
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}
+button{
+	font-size: 15px;
+	background: white;
+}
+button:hover{
+	background: black;
+	color: white;
+}
+
+
+ 

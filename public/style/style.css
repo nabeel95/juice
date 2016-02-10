@@ -13,15 +13,6 @@ body{
   shape-rendering: crispEdges;
 }
 
-.bar {
-  fill: orange;
-}
-
-.bar:hover {
-  fill: orangered ;
-}
-
-
 .arc text {
   font: 10px sans-serif;
   text-anchor: middle;

@@ -3,7 +3,6 @@
 		<title>Juice</title>
 		<link rel="stylesheet" href="./style/style.css">
 		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
-		<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
 		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="../js/d3Pie.min.js"></script>
 	</head>
@@ -11,11 +10,13 @@
 	<hr><h1>Juice</h1><hr>
 	<h3 align="center">note:click on a button to see graph and hower over the bars to see more details</h3>
 	<div class="buttons">
-	<tr>
-		<td><button id="sugarVsSugarLess" onclick="sugarVsSugarLess()">Suger VS SugerLess BAR CHART</button></td>
-		<td><button id="juiceConsumption" onclick="juiceConsumption()">juices according consumption BAR CHART</button></td>
-		<td><button onclick="juiceAccordingDay()">juice consumption according day PIE CHART</button></td>
-		</tr>	</div>
+		<button id="sugarVsSugarLess" onclick="sugarVsSugarLess()">Suger VS SugerLess BAR CHART</button>
+		<button id="juiceConsumption" onclick="juiceConsumption()">juices according consumption BAR CHART</button>
+		<button onclick="juiceAccordingDay()">juice consumption according day PIE CHART</button>
+		<button onclick="juiceAccordingMonth()">juice consumption according Month</button>
+		<button onclick="juiceAccordingHours()">juice consumption according Hours</button>
+
+	</div>
 		<hr>
 		<div class="chart" id="chart"></div>
 		<hr>

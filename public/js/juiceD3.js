@@ -34,33 +34,33 @@ var barGraph = function(data){
     var group = svgContainer.append("g")
     			.attr("id","barGraph")
     			.attr("class","graph");
-//============================================
-var formatPercent = d3.format("1.0%");
-var x = d3.scale.ordinal()
-    .rangeRoundBands([40, 300], 0);
 
-var ya = d3.scale.linear()
-    .range([500, 70]);
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+	var formatPercent = d3.format("1.0%");
+	var x = d3.scale.ordinal()
+	    .rangeRoundBands([40, 300], 0);
 
-var yAxis = d3.svg.axis()
-    .scale(ya)
-    .orient("right")
-    .tickFormat(formatPercent);
-group.append("g")
-      .attr("class", "graph")
-   	  .attr('id','axis')
-      .attr("transform", "translate(0," + 500 + ")")
-      .call(xAxis);
+	var ya = d3.scale.linear()
+	    .range([500, 70]);
 
-  group.append("g")
-      .attr('id','axis')
-      .attr("class", "graph")
-      .call(yAxis)
-//============================================
+	var xAxis = d3.svg.axis()
+	    .scale(x)
+	    .orient("bottom");
+
+	var yAxis = d3.svg.axis()
+	    .scale(ya)
+	    .orient("right")
+	    .tickFormat(formatPercent);
+	group.append("g")
+	      .attr("class", "graph")
+	   	  .attr('id','axis')
+	      .attr("transform", "translate(0," + 500 + ")")
+	      .call(xAxis);
+
+	  group.append("g")
+	      .attr('id','axis')
+	      .attr("class", "graph")
+	      .call(yAxis)
 
     var text = group.selectAll(".text")
 						.data(data)
@@ -119,9 +119,8 @@ group.append("g")
 				.attr("stroke-width","40")
 }
 
-
-
 //======================================================================
+
 var juiceConsumption = function(){
 	$.get('juicedata',function(data){
 		Data=JSON.parse(data);
@@ -170,31 +169,31 @@ var juiceconsumption = function(data){
 					return ("M"+((i*30)+50)+','+(y(d.quantity)-10)+' '+((i*30)+50)+','+(y(d.quantity)-250))
 				})
 //========================================================				
-var formatPercent = d3.format("1.0%");
-var x = d3.scale.ordinal()
-    .rangeRoundBands([40, 1000], 10);
+	var formatPercent = d3.format("1.0%");
+	var x = d3.scale.ordinal()
+	    .rangeRoundBands([40, 1000], 10);
 
-var ya = d3.scale.linear()
-    .range([500, 170]);
+	var ya = d3.scale.linear()
+	    .range([500, 170]);
 
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
+	var xAxis = d3.svg.axis()
+	    .scale(x)
+	    .orient("bottom");
 
-var yAxis = d3.svg.axis()
-    .scale(ya)
-    .orient("right")
-    .tickFormat(formatPercent);
-svgContainer.append("g")
-    	.attr("class","graph")
-    	.attr('id','axis')
-      	.attr("transform", "translate(0," + 500 + ")")
-      	.call(xAxis);
+	var yAxis = d3.svg.axis()
+	    .scale(ya)
+	    .orient("right")
+	    .tickFormat(formatPercent);
+	svgContainer.append("g")
+	    	.attr("class","graph")
+	    	.attr('id','axis')
+	      	.attr("transform", "translate(0," + 500 + ")")
+	      	.call(xAxis);
 
-  svgContainer.append("g")
-		.attr('id','axis')
-    	.attr("class", "graph")
-      	.call(yAxis)
+	  svgContainer.append("g")
+			.attr('id','axis')
+	    	.attr("class", "graph")
+	      	.call(yAxis)
 //========================================================				
 	var text = group.selectAll('text')
 					.data(data)
@@ -265,17 +264,32 @@ var juiceConsumptionAccDate = function(data){
 
 var juiceAccordingDay = function(){
 	$.get('juicedata',function(data){
-		var count=[];
+		var count={};
 		var days = ['SUNDAY','MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY'];
 		var countByDays=[];
 		JSON.parse(data).forEach(function(each){ 
 			var dateForm = new Date(each.date);
-			count[dateForm.getDay()]=(count[dateForm.getDay()]||0)+1;
+			count[days[dateForm.getDay()]]=(count[days[dateForm.getDay()]]||0)+1;
 		});
-		for(var i=1;i<count.length;i++){
-			countByDays.push({'label':days[i],'value':count[i]})
+		for(var day in count){
+			countByDays.push({'label':day,'value':count[day]})
 		}
 		$("#pieForDay").click(d3Pie(countByDays,'JUICE CONSUMPTION ACCORDING TO DAY'));
+	})
+};
+var juiceAccordingMonth = function(){
+	$.get('juicedata',function(data){
+		var count={};
+		var months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+		var countByMonth=[];
+		JSON.parse(data).forEach(function(each){ 
+			var dateForm = new Date(each.date);
+			count[months[dateForm.getMonth()]]=(count[months[dateForm.getMonth()]]||0)+1;
+		});
+		for(var month in count)
+			countByMonth.push({'label':month,'value':count[month]})
+
+		d3Pie(countByMonth,"Juices According To Month")
 	})
 };
 var d3Pie = function(data,heading){
@@ -287,16 +301,19 @@ var d3Pie = function(data,heading){
 		}
 	},
 	"size": {
-		"canvasWidth": 790,
-		"pieOuterRadius": "220px",
-		"pieInnerRadius": "90%"
+		"canvasWidth": 650,
+		"pieOuterRadius": "200px",
+		"pieInnerRadius": "85%"
 	},
 	"data": {
 		"content":data
 	},
 	"labels": {
 		"outer": {
-			"pieDistance": 15
+			"pieDistance": 25
+		},
+		"inner": {
+			"hideWhenLessThanPercentage": 3
 		}
 	},
 	"tooltips": {
@@ -307,6 +324,20 @@ var d3Pie = function(data,heading){
 });
 };
 
-
+var juiceAccordingHours = function(){
+	$.get('juicedata',function(data){
+		var count=[];
+		var arrForData=[];
+		JSON.parse(data).forEach(function(each){ 
+			var dateForm = new Date(each.date);
+			count[dateForm.getHours().toString()]=(count[dateForm.getHours().toString()]||0)+1;
+		});
+		var hours = Object.keys(count);
+		for(var time=0;time<24;time++){
+			arrForData.push({'label':time+'-'+(+time+1),'value':count[time]})
+		}
+		d3Pie(arrForData,'Juices According Hours')
+	})
+};
 
 

@@ -2,7 +2,6 @@ h1{
 	text-align: center;
 }
 body{
-	font: monospace;
 	font-size: 15px;
 }
 #axis path,
@@ -29,6 +28,3 @@ button:hover{
 	background: black;
 	color: white;
 }
-
-
- 

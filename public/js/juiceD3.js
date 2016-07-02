@@ -116,7 +116,7 @@ var barGraph = function(data){
 					.attr('stroke','black')
 				})
 				.attr('y2',500)
-				.transition().duration(1500).ease("linear")
+				.transition().duration(1500).ease("bounce")
 				.attr('y2',function(d){
 					return y(d.value);})
 				.attr('stroke','black')
@@ -133,14 +133,17 @@ var sugarVsSugarLess = function(){
 			else sugar+=each.quantity
 		})
 		var arrForPie=[{"label":"Sugar","value":sugar},{"label":"SugarLess","value":sugarLess}]
-		if($('#sugarVsSugarLess')[0].innerHTML=="Suger VS SugerLess BAR CHART"){
+		var button = $('#sugarVsSugarLess')[0];
+		if(button.innerHTML=="Suger VS SugerLess BAR CHART"){
 			barGraph(arrForPie)
-			$('#sugarVsSugarLess')[0].innerHTML="Suger VS SugerLess PIE CHART"
+			button.innerHTML="Suger VS SugerLess PIE CHART"
+			button.className = "btn btn-success"
 		}
 		else
-		if($('#sugarVsSugarLess')[0].innerHTML=="Suger VS SugerLess PIE CHART"){
+		if(button.innerHTML=="Suger VS SugerLess PIE CHART"){
 			d3Pie(arrForPie,'Juices based on IsSugar')
-			$('#sugarVsSugarLess')[0].innerHTML="Suger VS SugerLess BAR CHART"
+			button.innerHTML="Suger VS SugerLess BAR CHART"
+			button.className = "btn btn-primary";
 		}
 	});
 };
@@ -157,14 +160,17 @@ var juiceConsumption = function(){
 				arrForPie.push({'label':juiceNames[i],'value':count[Object.keys(count)[i]]})
 			}
 		}
-		if($('#juiceConsumption')[0].innerHTML=="juices according consumption BAR CHART"){
+		var button = $('#juiceConsumption')[0];
+		if(button.innerHTML=="juices according consumption BAR CHART"){
 			barGraph(arrForPie)
-			$('#juiceConsumption')[0].innerHTML="juices according consumption PIE CHART"
+			button.innerHTML="juices according consumption PIE CHART"
+			button.className = "btn btn-success"
 		}
 		else
-		if($('#juiceConsumption')[0].innerHTML=="juices according consumption PIE CHART"){
+		if(button.innerHTML=="juices according consumption PIE CHART"){
 			d3Pie(arrForPie,'Juices according consumption')
-			$('#juiceConsumption')[0].innerHTML="juices according consumption BAR CHART"
+			button.innerHTML="juices according consumption BAR CHART"
+			button.className = "btn btn-primary"
 		}
 	})
 };

@@ -20,11 +20,19 @@ body{
 .arc path {
   stroke: #fff;
 }
-button{
+
+.chart{
+	margin-left: 20px;
+}
+
+.buttons{
+	margin-left: 10px;
+}
+/*button{
 	font-size: 15px;
 	background: white;
 }
 button:hover{
 	background: black;
 	color: white;
-}
+}*/

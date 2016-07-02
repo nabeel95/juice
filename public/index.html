@@ -2,19 +2,20 @@
 	<head>
 		<title>Juice</title>
 		<link rel="stylesheet" href="./style/style.css">
+		<link rel="stylesheet" href="./style/bootstrap.min.css">
 		<script type="text/javascript" src="../js/d3.v3.min.js"></script>
 		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="../js/d3Pie.min.js"></script>
 	</head>
 	<body>
 	<hr><h1>Juice</h1><hr>
-	<h3 align="center">note:click on a button to see graph and hower over the bars to see more details</h3>
+	<h3 align="center">Note:click on a button to see graph and hower over the bars to see more details</h3>
 	<div class="buttons">
-		<button id="sugarVsSugarLess" onclick="sugarVsSugarLess()">Suger VS SugerLess BAR CHART</button>
-		<button id="juiceConsumption" onclick="juiceConsumption()">juices according consumption BAR CHART</button>
-		<button onclick="juiceAccordingDay()">juice consumption according day PIE CHART</button>
-		<button onclick="juiceAccordingMonth()">juice consumption according Month</button>
-		<button onclick="juiceAccordingHours()">juice consumption according Hours</button>
+		<button class="btn btn-primary" id="sugarVsSugarLess" onclick="sugarVsSugarLess()">Suger VS SugerLess BAR CHART</button>
+		<button class="btn btn-primary" id="juiceConsumption" onclick="juiceConsumption()">juices according consumption BAR CHART</button>
+		<button class="btn btn-primary" onclick="juiceAccordingDay()">juice consumption according day PIE CHART</button>
+		<button class="btn btn-primary" onclick="juiceAccordingMonth()">juice consumption according Month</button>
+		<button class="btn btn-primary" onclick="juiceAccordingHours()">juice consumption according Hours</button>
 
 	</div>
 		<hr>
